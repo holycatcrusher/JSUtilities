@@ -51,10 +51,12 @@ function Utilities() {
     //This function is used to allow a class to be aplied to an element when 
     //another element is hovered over, while also applying a class to the hovered element
     this.applyClassToAnotherElementOnHover = function (element1, class1, element2, class2) {
+        //when hovered
         element1.hover(function () {
             $(this).addClass(class1);
             element2.addClass(class2);
 
+            //when not hovered
         }, function () {
             $(this).removeClass(class1);
             element2.removeClass(class2);
@@ -65,18 +67,44 @@ function Utilities() {
 
     //This function is used to allow a class to be aplied to an element when 
     //another element is focused over, while also applying a class to the focused element
-    this.applyClassToAnotherElementOnHover = function (element1, class1, element2, class2) {
+    this.applyClassToAnotherElementOnFocus = function (element1, class1, element2, class2) {
+        //when focused
         element1.focus(function () {
             $(this).addClass(class1);
             element2.addClass(class2);
 
         });
 
+        //when not focused
         element1.focusout(function () {
             $(this).removeClass(class1);
             element2.removeClass(class2);
 
         });
+
+    }
+
+    //This function is used to allow a class to be aplied to an element when 
+    //another element is active over, while also applying a class to the active element
+    //the possible active elements have the specified active classses removed
+    this.applyClassToAnotherElementOnActive = function (element1, class1, element2, class2, possibleActiveElements) {
+        element1.on("click", function () {
+            otherPossibleActiveElements.removeClass(class1);
+            otherPossibleActiveElements.removeClass(class2);
+            $(this).addClass(class1);
+            element2.addClass(class2);
+
+        });
+
+    }
+
+    //This function is used to apply a class to a element when another element is 
+    //hovered, focused, or active
+    this.applyClassToAnotherElementOnHoverFocusAndActive = function (element1, class1, element2, class2, possibleActiveElements) {
+        this.applyClassToAnotherElementOnHover(element1, class1, element2, class2);
+        this.applyClassToAnotherElementOnFocus(element1, class1, element2, class2);
+        this.applyClassToAnotherElementOnActive(element1, class1, element2, class2, possibleActiveElements);
+
 
     }
 
