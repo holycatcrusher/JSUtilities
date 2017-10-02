@@ -176,4 +176,18 @@ function Utilities() {
         return coords;
     }
 
+    /*
+        Checks web worker support. returns true if is supported, and false if not
+    */
+    this.checkWebWorkerSupport = function () {
+        if (typeof (Worker) !== "undefined") {
+            return true;
+
+        } else {
+            return false;
+
+        }
+
+    }
+
 }
