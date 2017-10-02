@@ -157,7 +157,7 @@ function Utilities() {
             y += yIncrement;
             coords[i] = [];
             coords[i][0] = Math.floor(x);
-            coords[i][1] = Math.floor(y);
+            coords[i][1] = Math.floor(y); 
 
         }
 
