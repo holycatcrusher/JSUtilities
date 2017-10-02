@@ -4,7 +4,7 @@
 
 This file requires
 Jquery
-Custom Jquery functions by Bradley Honeyman
+CustomJqueryAddons.js by Bradley Honeyman
 utilities.js by Bradley Honeyman
 */
 
@@ -31,6 +31,8 @@ $(window).ready(function () {
         randomCoord2[0][0], randomCoord2[0][1]
     );
 
+
+    //genterate linear coords output html
     var output = "";
     for (var i = 0; i < points.length; i++) {
         output += "(";
@@ -41,6 +43,7 @@ $(window).ready(function () {
 
     }
 
+    //output the linear coords
     $("#linearCoords").html(output);
 
 });

@@ -5,7 +5,7 @@
 
 This file requires
 Jquery
-Custom Jquery functions by Bradley Honeyman
+CustomJqueryAddons.js by Bradley Honeyman
 */
 
 function Utilities() {
@@ -157,7 +157,7 @@ function Utilities() {
             y += yIncrement;
             coords[i] = [];
             coords[i][0] = Math.floor(x);
-            coords[i][1] = Math.floor(y); 
+            coords[i][1] = Math.floor(y);
 
         }
 
