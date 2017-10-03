@@ -6,6 +6,7 @@ This file requires
 Jquery
 CustomJqueryAddons.js by Bradley Honeyman
 utilities.js by Bradley Honeyman
+worker var created named worker which runs utilsExampleWebWorker.js
 */
 
 $(window).ready(function () {
@@ -25,25 +26,22 @@ $(window).ready(function () {
         0, window.innerHeight);
     $("#randomCoord2").text("(" + randomCoord2[0][0] + ", " + randomCoord2[0][1] + ")");
 
-    //generate linear coords between 2 random points
-    var points = util.getnerateSetOfCoordsAlongLinearPathDDA(
-        randomCoord1[0][0], randomCoord1[0][1],
-        randomCoord2[0][0], randomCoord2[0][1]
-    );
+    if (util.checkWebWorkerSupport()) {
+        worker.postMessage(randomCoord1);
+        worker.postMessage(randomCoord2);
 
+        worker.onmessage = function (event) {
+            //generate linear coords between 2 random points
+            var output = event.data;
 
-    //genterate linear coords output html
-    var output = "";
-    for (var i = 0; i < points.length; i++) {
-        output += "(";
-        output += points[i][0];
-        output += ", ";
-        output += points[i][1];
-        output += ")<br />"
+            //output the linear coords
+            $("#linearCoords").html(output);
+
+        }
+
+    } else {
+        $("#linearCoords").text("web workers not supported by this browser");
 
     }
-
-    //output the linear coords
-    $("#linearCoords").html(output);
 
 });

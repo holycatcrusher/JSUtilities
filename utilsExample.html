@@ -22,7 +22,16 @@
 
     <!-- list of coords between the two randomly generated points -->
     <h3>List of linear coords between coord 1 and 2</h3>
-    <p id="linearCoords"></p>
+    <p id="linearCoords">Calculating ...</p>
+
+    <!-- web worker created here, so required scripts download to -->
+    <script type="text/javascript">
+        if (typeof (Worker) !== "undefined") {
+            var worker = new Worker("utilsExampleWebWorker.js");
+
+        }
+
+    </script>
 
     <!-- JavaScript  -->
     <!-- link to a copy of JQuery -->
@@ -35,7 +44,7 @@
     <script type="text/javascript" src="http://rawgit.com/holycatcrusher/JSUtilities/master/utilities.js"></script>
 
     <!-- link to the example script running on thhis page -->
-    <script type="text/javascript" src="http://rawgit.com/holycatcrusher/JSUtilities/master/utilsExample.js"></script>
+    <script type="text/javascript" src="utilsExample.js"></script>
 
 </body>
 </html>
